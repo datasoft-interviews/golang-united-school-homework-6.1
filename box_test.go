@@ -62,7 +62,7 @@ func TestExtractByIndex(t *testing.T) {
 	if got_shape, got_err := box.ExtractByIndex(0); got_shape != want_shape && got_err != want_err {
 		t.Errorf("got %t (%t), want %t (%t)", got_shape, got_err, want_shape, want_err)
 	}
-	want_shape, want_err = Shape(nil), notExist
+	want_shape, want_err = Shape(nil), outOfRange
 	if got_shape, got_err := box.ExtractByIndex(0); got_shape != want_shape || got_err != want_err {
 		t.Errorf("got %t (%t), want %t (%t)", got_shape, got_err, want_shape, want_err)
 	}
@@ -76,7 +76,7 @@ func TestGetByIndexAfterExtractByIndex(t *testing.T) {
 	if got_shape, got_err := box.ExtractByIndex(0); got_shape != want_shape || got_err != want_err {
 		t.Errorf("got %t (%t), want %t (%t)", got_shape, got_err, want_shape, want_err)
 	}
-	want_shape, want_err = Shape(nil), notExist
+	want_shape, want_err = Shape(nil), outOfRange
 	if got_shape, got_err := box.GetByIndex(0); got_shape != want_shape || got_err != want_err {
 		t.Errorf("got %t (%t), want %t (%t)", got_shape, got_err, want_shape, want_err)
 	}

@@ -36,6 +36,9 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 	if i < 0 || i >= b.shapesCapacity {
 		return nil, outOfRange
 	}
+	if i < 0 || i >= len(b.shapes) {
+		return nil, outOfRange
+	}
 	if b.shapes[i] == nil {
 		return nil, notExist
 	}
@@ -47,7 +50,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	shape, err := b.GetByIndex(i)
 	if err == nil {
-		b.shapes[i] = nil
+		b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
 	}
 	return shape, err
 }
@@ -90,7 +93,7 @@ func (b *box) RemoveAllCircles() error {
 		_, ok := shape.(Circle)
 		if ok {
 			found = true
-			b.shapes[i] = nil
+			b.shapes = append(b.shapes[:i], b.shapes[i+1:]...)
 		}
 	}
 	if found {
