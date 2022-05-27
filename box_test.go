@@ -123,8 +123,8 @@ func TestSumArea(t *testing.T) {
 
 func TestRemoveAllCircles(t *testing.T) {
 	box := NewBox(2)
-	var shape1 Shape = Circle{4}
-	var shape2 Shape = Rectangle{2, 3}
+	var shape1 Shape = &Circle{4}
+	var shape2 Shape = &Rectangle{2, 3}
 	box.AddShape(shape1)
 	box.AddShape(shape2)
 	want := error(nil)
