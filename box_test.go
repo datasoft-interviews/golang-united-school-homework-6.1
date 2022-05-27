@@ -123,10 +123,10 @@ func TestSumArea(t *testing.T) {
 
 func TestRemoveAllCircles(t *testing.T) {
 	box := NewBox(4)
-	var shape1 Shape = &Circle{4}
-	var shape2 Shape = &Rectangle{2, 3}
-	var shape3 Shape = Circle{4}
-	var shape4 Shape = Rectangle{2, 3}
+	shape1 := &Circle{4}
+	shape2 := &Rectangle{2, 3}
+	shape3 := &Circle{4}
+	shape4 := &Rectangle{2, 3}
 	box.AddShape(shape1)
 	box.AddShape(shape2)
 	box.AddShape(shape3)
